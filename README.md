@@ -2,4 +2,4 @@
 
 Janez janša
 Josip Plemelj Veliki
-Ivan Vidav
+Borut Pahor
