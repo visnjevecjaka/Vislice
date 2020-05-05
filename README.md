@@ -1,5 +1,5 @@
 # Vislice
 
 Janez janša
-Josip Plemelj
+Josip Plemelj Veliki
 Ivan Vidav
