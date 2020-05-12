@@ -3,7 +3,7 @@ import random
 STEVILO_DOVOLJENIH_Napak = 10
 
 PRAVILNA_CRKA = '+'
-PONOVLJENA_CRKA 0 'o'
+PONOVLJENA_CRKA = 'o'
 NAPACNA_CRKA = '-'
 
 ZMAGA = 'W'
