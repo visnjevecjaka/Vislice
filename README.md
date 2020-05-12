@@ -1,5 +1,3 @@
 # Vislice
 
-Janez janša
-Josip Plemelj Veliki
-Borut Pahor
+Program za igro vislice.
