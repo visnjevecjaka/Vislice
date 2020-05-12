@@ -7,9 +7,10 @@ def izpis_zmage(igra):
     return f"Čestitke, uganil/a si geslo: '{igra.geslo}' v {len(igra.crke)} ugibih."
 
 def izpis_igre(igra):
-    besedilo = f""" Geslo: {igra.pravilni_del_gesla()}
+    besedilo = f"""Geslo: {igra.pravilni_del_gesla()}
 nepravilne črke: {igra.nepravilni_ugibi()}
-Imaš še {model.STEVILO_DOVOLJENIH_Napak - igra.stevilo_napak()} ugibov."""
+Zmotiš se lahko le še:
+ {model.STEVILO_DOVOLJENIH_Napak - igra.stevilo_napak()}"""
     return besedilo
 
 def zahtevaj_vnos():
@@ -31,4 +32,15 @@ def pozeni_vmesnik():
             print("napačen vnos!")
             crke = zahtevaj_vnos()
         
-        igra.ugibaj(crka)
+        stanje = igra.ugibaj(crka)
+
+        if stanje == model.ZMAGA:
+            print(izpis_zmage(igra))
+            break
+        elif stanje == model.PORAZ:
+            print(izpis_poraza(igra))
+            break
+
+pozeni_vmesnik()
+
+

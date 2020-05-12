@@ -44,7 +44,7 @@ class Igra:
                 pravilni_del += '_'
         return pravilni_del
 
-    def nepravilni_del_gesla(self):
+    def nepravilni_ugibi(self):
         return " ".join(self.napacne_crke())
 
     def ugibaj(self, crka):
