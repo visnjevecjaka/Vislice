@@ -1,36 +1,80 @@
+import random
+
 STEVILO_DOVOLJENIH_Napak = 10
 
-PRAVILNA CRKA = '+'
-PONOVLJENA-CRKA 0 'o'
+PRAVILNA_CRKA = '+'
+PONOVLJENA_CRKA 0 'o'
 NAPACNA_CRKA = '-'
 
 ZMAGA = 'W'
 PORAZ = 'X'
 
 class Igra:
-    def __init__(self):
-        pass
+    def __init__(self, geslo, crke=[]):
+        self.geslo = geslo.lower()
+
+        self.crke = [z.lower() for z in crke]
 
     def napacne_crke(self):
-        pass
+        napacne = [c for c in self.crke if c not in self.geslo]
+        return napacne
 
     def pravilne_crke(self):
-        pass
+        pravilne = [c for c in self.crke if c in self.geslo]
+        return pravilne
 
     def stevilo_napak(self):
-        pass
+        return len(self.napacne_crke())
 
     def zmaga(self):
-        pass
+        for c in self.geslo:
+            if c not in self.crke:
+                return False
+        return True
 
     def poraz(self):
-        pass
+        return self.stevilo_napak() > STEVILO_DOVOLJENIH_Napak
 
     def pravilni_del_gesla(self):
-        pass
+        pravilni_del = ''
+        for c in self.geslo:
+            if c in self.crke:
+                pravilni_del += c
+            else:
+                pravilni_del += '_'
+        return pravilni_del
 
     def nepravilni_del_gesla(self):
-        pass
+        return " ".join(self.napacne_crke())
 
     def ugibaj(self, crka):
-        pass
+        crka = crka.lower()
+
+        if crka in self.crke:
+            return PONOVLJENA_CRKA
+
+        self.crke.append(crka)
+
+        #Preverimo, kakšno je stanje igre po ugibu.
+        if crka in self.geslo:
+            if self.zmaga():
+                return ZMAGA
+            else:
+                return PRAVILNA_CRKA
+        else:
+            if self.poraz():
+                return PORAZ
+            else:
+                return NAPACNA_CRKA
+
+
+with open('besede.txt', encoding='utf-8') as f:
+    bazen_besed = f.read().split("\n")
+
+def nova_igra():
+    beseda = random.choice(bazen_besed)
+
+    igra = Igra(beseda)
+
+    return igra
+
